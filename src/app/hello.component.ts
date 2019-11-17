@@ -10,9 +10,14 @@ import { HelloService } from './hello.service';
 export class HelloComponent implements OnInit {
   @Input() name: string;
 
+  conteudo = {};
+
   constructor(private helloService: HelloService) { }
 
   ngOnInit() {
-
+    this.helloService.getDados().subscribe(dados => {
+      console.log(dados);
+      this.conteudo = dados;
+    });
   }
 }
